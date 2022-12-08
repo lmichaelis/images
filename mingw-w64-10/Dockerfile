@@ -10,5 +10,6 @@ RUN update-ca-certificates
 
 RUN update-alternatives --install /usr/bin/cc cc /usr/bin/x86_64-w64-mingw32-gcc-win32 50
 RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/x86_64-w64-mingw32-g++-win32 50
+RUN update-alternatives --install /usr/bin/ld ld /usr/bin/x86_64-w64-mingw32-ld 50
 
 ENTRYPOINT ["bash"]
