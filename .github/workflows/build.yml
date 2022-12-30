@@ -17,6 +17,7 @@ jobs:
       matrix:
         tag:
           - 'clang-11'
+          - 'clang-14'
           - 'gcc-9'
           - 'gcc-12'
           - 'mingw-w64-10'
