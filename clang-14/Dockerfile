@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 
 RUN apt update
-RUN apt install -y --no-install-recommends cmake make git clang-14 ca-certificates
+RUN apt install -y --no-install-recommends cmake make git clang-14 ca-certificates libclang-rt-14-dev
 RUN update-ca-certificates
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-14 50
