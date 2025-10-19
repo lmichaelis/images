@@ -12,15 +12,22 @@ jobs:
     permissions:
       contents: read
       packages: write
+      attestations: write
+      id-token: write
     strategy:
       fail-fast: false
       matrix:
         tag:
           - 'clang-11'
           - 'clang-14'
+          - 'clang-17'
+          - 'clang-18'
           - 'gcc-9'
           - 'gcc-12'
+          - 'gcc-14'
+          - 'gcc-15'
           - 'mingw-w64-10'
+          - 'mingw-w64-13'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -30,7 +37,6 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
@@ -42,3 +48,4 @@ jobs:
           context: ./${{ matrix.tag }}
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}
+          labels: ${{ steps.meta.outputs.labels }}

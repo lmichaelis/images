@@ -1,0 +1,16 @@
+FROM docker.io/debian:forky-slim
+
+LABEL org.opencontainers.image.source=https://github.com/lmichaelis/images
+LABEL org.opencontainers.image.description="Debian Forky Slim with MinGW-w64 13.0.0"
+LABEL org.opencontainers.image.licenses=MIT
+
+RUN apt update
+RUN apt install -y --no-install-recommends cmake make git g++-mingw-w64-x86-64 gcc-mingw-w64-x86-64 ca-certificates
+RUN update-ca-certificates
+
+RUN update-alternatives --install /usr/bin/cc cc /usr/bin/x86_64-w64-mingw32-gcc-win32 50
+RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/x86_64-w64-mingw32-g++-win32 50
+RUN update-alternatives --install /usr/bin/ld ld /usr/bin/x86_64-w64-mingw32-ld 50
+RUN update-alternatives --install /usr/bin/ar ar /usr/bin/x86_64-w64-mingw32-ar 50
+
+ENTRYPOINT ["bash"]
