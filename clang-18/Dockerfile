@@ -10,7 +10,7 @@ RUN apt install -y --no-install-recommends cmake make git clang-18 ca-certificat
 RUN update-ca-certificates
 
 RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-18 50
-RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang-19 50
+RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang-18 50
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 50
 RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-18 50
 
